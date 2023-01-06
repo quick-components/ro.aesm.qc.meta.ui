@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: QC user interface meta model
+Bundle-SymbolicName: ro.aesm.qc.meta.ui
+Bundle-Version: 0.0.1.qualifier
+Import-Package: ro.aesm.qc.api.base,
+ ro.aesm.qc.api.exception,
+ ro.aesm.qc.api.meta.component,
+ ro.aesm.qc.base,
+ ro.aesm.qc.base.util
+Automatic-Module-Name: ro.aesm.qc.meta.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/ro.aesm.qc.meta.ui.UiCompiler.xml,
+ OSGI-INF/ro.aesm.qc.meta.ui.UiParser.xml

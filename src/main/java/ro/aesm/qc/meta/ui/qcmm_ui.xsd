@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://qc.aesm.ro/meta/ui"
+	xmlns="https://qc.aesm.ro/meta/ui" attributeFormDefault="unqualified"
+	elementFormDefault="qualified">
+
+	<xs:element name="region" type="Region" />
+
+	<xs:element name="text_field" type="TextField" />
+	<xs:element name="textarea" type="Textarea" />
+	<xs:element name="date_field" type="DateField" />
+	<xs:element name="number_field" type="NumberField" />
+	<xs:element name="lov_field" type="LovField" />
+	<xs:element name="hidden_field" type="HiddenField" />
+	<xs:element name="checkbox" type="Checkbox" />
+	<xs:element name="button" type="Button" />
+	<xs:element name="html" type="Html" />
+
+	<!-- ===================================================== -->
+
+	<xs:complexType name="UiItem">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="cssClass" type="xs:string" />
+		<xs:attribute name="colspan" type="xs:int" />
+		<xs:attribute name="rowspan" type="xs:int" />
+		<xs:attribute name="newRow" type="xs:boolean" />
+	</xs:complexType>
+
+
+	<xs:simpleType name="LabelPosition">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="front"></xs:enumeration>
+			<xs:enumeration value="top"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="LabelAlign">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="begin"></xs:enumeration>
+			<xs:enumeration value="center"></xs:enumeration>
+			<xs:enumeration value="end"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ShowLabel">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="yes"></xs:enumeration>
+			<xs:enumeration value="no"></xs:enumeration>
+			<xs:enumeration value="empty"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="UiFormItem">
+		<xs:complexContent>
+			<xs:extension base="UiItem">
+				<xs:attribute name="label" type="xs:string" />
+				<xs:attribute name="labelPosition" type="LabelPosition" />
+				<xs:attribute name="labelAlign" type="LabelAlign" />
+				<xs:attribute name="showLabel" type="ShowLabel" />
+				<xs:attribute name="labelWidth" type="xs:int" />
+				<xs:attribute name="required" type="xs:boolean" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:simpleType name="UiRegionLayout">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="grid"></xs:enumeration>
+			<xs:enumeration value="horizontal"></xs:enumeration>
+			<xs:enumeration value="vertical"></xs:enumeration>
+			<xs:enumeration value="tabs"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="UiRegionDisplay">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="inline"></xs:enumeration>
+			<xs:enumeration value="absolute"></xs:enumeration>
+			<xs:enumeration value="popup"></xs:enumeration>
+			<xs:enumeration value="sticky"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+
+
+	<xs:complexType name="Region">
+		<xs:complexContent>
+			<xs:extension base="UiItem">
+				<xs:sequence>
+					<xs:element name="defaults" minOccurs="0" maxOccurs="1">
+						<xs:complexType>
+							<xs:attribute name="colspan" type="xs:int" />
+							<xs:attribute name="rowspan" type="xs:int" />
+							<xs:attribute name="newRow" type="xs:boolean" />
+							<xs:attribute name="labelPosition"
+								type="LabelPosition" />
+							<xs:attribute name="labelAlign" type="LabelAlign" />
+							<xs:attribute name="showLabel" type="ShowLabel" />
+							<xs:attribute name="labelWidth" type="xs:int" />
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="layout" type="UiRegionLayout" />
+				<xs:attribute name="display" type="UiRegionDisplay" />
+				<xs:attribute name="children" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+
+	</xs:complexType>
+
+	<xs:complexType name="TextField">
+		<xs:complexContent>
+			<xs:extension base="UiFormItem">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Textarea">
+		<xs:complexContent>
+			<xs:extension base="UiFormItem">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="DateField">
+		<xs:complexContent>
+			<xs:extension base="UiFormItem">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="NumberField">
+		<xs:complexContent>
+			<xs:extension base="UiFormItem">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="LovField">
+		<xs:complexContent>
+			<xs:extension base="UiFormItem">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Checkbox">
+		<xs:complexContent>
+			<xs:extension base="UiFormItem">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="HiddenField">
+		<xs:complexContent>
+			<xs:extension base="UiFormItem">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<!-- ===================================================== -->
+
+	<xs:complexType name="Button">
+		<xs:complexContent>
+			<xs:extension base="UiItem">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Html">
+		<xs:complexContent>
+			<xs:extension base="UiItem">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<!-- ===================================================== -->
+
+	<xs:complexType name="Ui">
+		<xs:sequence>
+			<xs:element name="items" minOccurs="1" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:any namespace="https://qc.aesm.ro/meta/ui"
+							minOccurs="0" maxOccurs="unbounded"></xs:any>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" />
+	</xs:complexType>
+
+</xs:schema>
+   
